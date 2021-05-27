@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { ReactNode } from 'react'
 import WeatherIcon from '../weatherIcon';
 import styled from 'styled-components'
 
@@ -11,17 +11,16 @@ export type weatherTodayProps = {
   weatherStateAbbr: string
 }
 
-export default function WeatherToday({
-  temperature, location, weatherStateAbbr
-}: weatherTodayProps): ReactElement {
-  
+const WeatherToday = (props: weatherTodayProps): ReactNode => {
   return (
     <section>
       <WeatherIcon src="https://www.metaweather.com/static/img/weather/s.svg" />
-      <div>{temperature}<span>C</span></div>
-      <div>Shower</div>
-      <div>Today Fri,5 Jun</div>
-      <div><img />Helsinki</div>
+      <div>{props.temperature}<span>C</span></div>
+      <div>{props.location}</div>
+      <div>{props.date}</div>
+      <div><img />{props.weatherStateName}</div>
     </section>
   )
 }
+
+export default WeatherToday;
